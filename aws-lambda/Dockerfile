@@ -2,7 +2,7 @@ FROM amazonlinux
 
 WORKDIR /tmp
 #install the dependencies
-RUN yum -y install gcc-c++ && yum -y install findutils
+RUN yum -y install gcc-c++ && yum -y install findutils git
 
 RUN touch ~/.bashrc && chmod +x ~/.bashrc
 
