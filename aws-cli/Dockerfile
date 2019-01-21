@@ -21,12 +21,11 @@ RUN curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.s
     && nvm alias default $NODE_VERSION \
     && nvm use default
 
-ENV NODE_PATH $NVM_DIR/v$NODE_VERSION/lib/node_modules
-ENV PATH      $NVM_DIR/v$NODE_VERSION/bin:$PATH
-
 # Install yarn
 RUN curl -o- -L https://yarnpkg.com/install.sh | bash -s -- --version 1.13.0
-RUN export PATH=$HOME/.yarn/bin:$PATH
+
+ENV NODE_PATH $NVM_DIR/versions/node/v$NODE_VERSION/lib/node_modules
+ENV PATH      $NVM_DIR/versions/node/v$NODE_VERSION/bin:/root/.yarn/bin:$PATH
 
 ENV AWS_CLI_URL "https://s3.amazonaws.com/aws-cli/awscli-bundle.zip"
 RUN curl --progress-bar -o /tmp/awscli-bundle.zip $AWS_CLI_URL && \
