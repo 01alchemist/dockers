@@ -1,11 +1,11 @@
-FROM amazonlinux
-LABEL maintainer="n.vianyakan@instamotion.com"
+FROM node:8.10
+LABEL maintainer="01@01alchemist.com"
 
 ENV VENDOR_DIR "/vendor"
 ENV INSTALL_DIR $VENDOR_DIR/awscli
 
 #install the dependencies
-RUN yum -y install unzip groff
+RUN apt-get update && apt-get install -y unzip groff
 
 ENV AWS_CLI_URL "https://s3.amazonaws.com/aws-cli/awscli-bundle.zip"
 RUN curl --progress-bar -o /tmp/awscli-bundle.zip $AWS_CLI_URL && \
